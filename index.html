@@ -242,7 +242,7 @@ footer .credit{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line
 <div class="hero-copy"><div class="eyebrow">DOWNTOWN LOS ANGELES · JEWELRY REPAIR</div><h1>Keep the pieces<br><em>that mean something.</em></h1><p class="lead">Jewelry repair and custom work with a personal touch. Bring in the piece you love and talk through what it needs.</p>
 <div class="hero-actions"><a class="btn btn-primary" href="tel:+12138568509">Call (213) 856-8509</a><a class="btn btn-ghost" href="https://maps.google.com/?q=212+W+7th+St,+Los+Angeles,+CA+90014" target="_blank" rel="noopener">Get Directions ↗</a></div>
 <div class="hero-note"><span class="gold-dot"></span> Located at 212 W 7th St, Los Angeles</div></div>
-<div class="hero-visual"><img src="assets/nameplates.jpg" alt="Custom gold nameplate jewelry" fetchpriority="high"><div class="hero-visual-caption"><span>Made personal.</span><span>Made to be kept.</span></div></div>
+<div class="hero-visual hero-slideshow" aria-label="Jewelry work slideshow"><img class="hero-slide active" src="assets/nameplates.jpg" alt="Custom nameplate jewelry" fetchpriority="high"><img class="hero-slide" src="assets/bracelet.jpg" alt="Bracelet jewelry work"><img class="hero-slide" src="assets/maria-nameplate.png" alt="Custom Maria nameplate"><img class="hero-slide" src="assets/travis-pendant.jpg" alt="Personalized pendant"><img class="hero-slide" src="assets/tiny-miles-pendant.png" alt="Custom pendant"><img class="hero-slide" src="assets/olivia-nameplate.jpg" alt="Custom nameplate design"><div class="hero-visual-caption"><span>Custom jewelry &amp; repairs</span><span class="slide-count">01 / 06</span></div></div>
 </div></header>
 <div class="trust"><div class="wrap trust-grid"><div><strong>Jewelry repair</strong><span>Help for pieces you wear every day</span></div><div><strong>Custom nameplates</strong><span>Personalized jewelry ideas</span></div><div><strong>Downtown LA</strong><span>Convenient 7th Street location</span></div><div><strong>Talk to a person</strong><span>Call to discuss your piece</span></div></div></div>
 <section id="services"><div class="wrap"><div class="section-head"><div><div class="eyebrow">WHAT WE CAN HELP WITH</div><h2>Repair it. Restore it.<br><em>Make it yours.</em></h2></div><p>Every piece is different. Call or stop by to discuss the repair, the material, and what you want the finished piece to look like.</p></div>
@@ -280,4 +280,34 @@ body.julio-site .jewelry-gallery img,
 body.julio-site .jewelry-gallery .gallery-feature img{border:0!important;outline:0!important;box-shadow:none!important}
 body.julio-site .jewelry-gallery figure{border-radius:0!important;background:transparent!important}
 @media(prefers-reduced-motion:reduce){body.julio-site *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-</style></body></html>
+</style>
+<style>
+/* Final polish: larger visible logo and a borderless, auto-advancing jewelry slideshow. */
+body.julio-site nav .logo img, body.julio-site footer .logo img{width:58px;height:58px;border-radius:0;object-fit:contain;box-shadow:none}
+body.julio-site nav .logo{font-size:clamp(15px,1.8vw,20px);gap:12px}
+body.julio-site .hero-slideshow{position:relative;isolation:isolate;overflow:hidden;border:0!important;border-radius:0!important;box-shadow:none!important;min-height:330px}
+body.julio-site .hero-slideshow .hero-slide{position:absolute;inset:0;width:100%;height:100%;min-height:330px;object-fit:cover;border:0!important;outline:0!important;box-shadow:none!important;border-radius:0!important;opacity:0;transition:opacity 900ms ease;display:block}
+body.julio-site .hero-slideshow .hero-slide.active{opacity:1}
+body.julio-site .hero-slideshow .hero-visual-caption{position:relative;z-index:2;margin-top:clamp(330px,43vw,530px);background:#111110;padding:12px 3px}
+body.julio-site .jewelry-gallery,body.julio-site .jewelry-gallery figure,body.julio-site .jewelry-gallery img{border:0!important;outline:0!important;box-shadow:none!important;border-radius:0!important}
+body.julio-site .jewelry-gallery{gap:3px}
+body.julio-site .jewelry-gallery figcaption{padding:12px 4px}
+@media(max-width:800px){body.julio-site nav .logo img,body.julio-site footer .logo img{width:48px;height:48px}body.julio-site .hero-slideshow,body.julio-site .hero-slideshow .hero-slide{min-height:260px}body.julio-site .hero-slideshow .hero-visual-caption{margin-top:clamp(260px,70vw,430px)}}
+@media(max-width:480px){body.julio-site nav .logo img{width:44px;height:44px}body.julio-site nav .logo{font-size:12px;gap:6px}}
+</style>
+<script>
+(function(){
+ const slides=[...document.querySelectorAll('.hero-slideshow .hero-slide')];
+ const count=document.querySelector('.hero-slideshow .slide-count');
+ if(slides.length>1){
+   let current=0;
+   window.setInterval(function(){
+     slides[current].classList.remove('active');
+     current=(current+1)%slides.length;
+     slides[current].classList.add('active');
+     if(count) count.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+   },3000);
+ }
+})();
+</script>
+</body></html>
