@@ -75,6 +75,9 @@
     .navlinks { display: flex; gap: 30px; font-size: 15px; }
     .navlinks a { color: var(--on-dark-soft); text-decoration: none; }
     .navlinks a:hover { color: var(--on-dark); }
+    .nav-end { display: flex; align-items: center; gap: 18px; }
+    .lang-toggle { min-height: 42px; padding: 8px 14px; border: 1px solid #776a5f; border-radius: 4px; background: transparent; color: var(--on-dark); font-size: 15px; font-weight: 500; cursor: pointer; }
+    .lang-toggle:hover { border-color: var(--on-dark); }
     .nav-call { display: flex; align-items: center; gap: 16px; }
     .nav-call .phone { color: var(--on-dark); font-weight: 600; text-decoration: none; white-space: nowrap; }
     .nav-call .button { min-height: 42px; padding: 9px 16px; font-size: 15px; }
@@ -86,7 +89,7 @@
     .hero .lede { max-width: 30em; margin-bottom: 30px; color: var(--on-dark-soft); font-size: 19px; line-height: 1.6; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
     .visit-lede { max-width: 30em; margin-bottom: 28px; color: var(--ink-soft); font-size: 18px; }
-    .hero-meta { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 12px 40px; margin: 0; padding-top: 20px; border-top: 1px solid var(--bench-line); font-size: 15px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 0; padding-top: 20px; border-top: 1px solid var(--bench-line); font-size: 15px; }
     .hero-meta dt { color: var(--on-dark-soft); }
     .hero-meta dd { margin: 0 0 6px; color: var(--on-dark); font-weight: 500; }
     .hero-photo { margin: 0; }
@@ -181,7 +184,7 @@
       .brand img { height: 44px; }
       .nav-call { display: none; }
       .hero .lede { font-size: 17px; }
-      .hero-meta { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; }
       .services { grid-template-columns: 1fr; }
       .work-grid { grid-template-columns: 1fr; }
       .review-foot { flex-direction: column; align-items: flex-start; }
@@ -202,20 +205,23 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Julio’s Jewelry Repair, back to top"><img src="jjr/julios-logo-web.png" alt="Julio’s Jewelry Repair" width="520" height="382"></a>
-      <nav class="navlinks" aria-label="Main">
-        <a href="#services">Services</a>
-        <a href="#work">Our work</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#visit">Visit</a>
+      <a class="brand" href="#top" aria-label="Julio’s Jewelry Repair, back to top" data-i18n-aria="brandAria"><img src="jjr/julios-logo-web.png" alt="Julio’s Jewelry Repair" width="520" height="382"></a>
+      <nav class="navlinks" aria-label="Main" data-i18n-aria="navAria">
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#work" data-i18n="navWork">Our work</a>
+        <a href="#reviews" data-i18n="navReviews">Reviews</a>
+        <a href="#visit" data-i18n="navVisit">Visit</a>
       </nav>
-      <div class="nav-call">
-        <a class="phone" href="tel:+12138568509">(213) 856-8509</a>
-        <a class="button" href="tel:+12138568509">Call the shop</a>
+      <div class="nav-end">
+        <button class="lang-toggle" type="button" data-lang-toggle lang="es">Español</button>
+        <div class="nav-call">
+          <a class="phone" href="tel:+12138568509">(213) 856-8509</a>
+          <a class="button" href="tel:+12138568509" data-i18n="callShop">Call the shop</a>
+        </div>
       </div>
     </div>
   </header>
@@ -224,20 +230,21 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div>
-          <h1 id="hero-title">Jewelry repair and custom nameplates in the LA Jewelry District</h1>
-          <p class="lede">Julio fixes broken chains, clasps and rings, resizes for a better fit, and makes personalized gold nameplates and pendants at his shop on West 7th Street.</p>
+          <h1 id="hero-title" data-i18n="heroTitle">Jewelry repair and custom nameplates in the LA Jewelry District</h1>
+          <p class="lede" data-i18n="heroLede">Julio fixes broken chains, clasps and rings, resizes for a better fit, and makes personalized gold nameplates and pendants at his shop on West 7th Street.</p>
           <div class="hero-actions">
-            <a class="button" href="tel:+12138568509">Call (213) 856-8509</a>
-            <a class="button ghost" href="https://maps.google.com/?q=212+W+7th+St,+Los+Angeles,+CA+90014" target="_blank" rel="noopener">Get directions</a>
+            <a class="button" href="tel:+12138568509" data-i18n="callNumber">Call (213) 856-8509</a>
+            <a class="button ghost" href="https://maps.google.com/?q=212+W+7th+St,+Los+Angeles,+CA+90014" target="_blank" rel="noopener" data-i18n="getDirections">Get directions</a>
           </div>
           <dl class="hero-meta">
-            <div><dt>Shop</dt><dd>212 W 7th St, Los Angeles</dd></div>
-            <div><dt>Hours</dt><dd>Call to confirm before visiting</dd></div>
+            <div><dt data-i18n="shop">Shop</dt><dd>212 W 7th St, Los Angeles</dd></div>
+            <div><dt data-i18n="hours">Hours</dt><dd data-i18n="hoursHero">Call to confirm before visiting</dd></div>
+            <div><dt data-i18n="language">Language</dt><dd data-i18n="languageValue">English and Spanish · Se habla español</dd></div>
           </dl>
         </div>
         <figure class="hero-photo">
-          <img src="jjr/custom-jewelry-4.jpg" alt="A gold nameplate bracelet reading Sebastian being worked on at the bench" width="1000" height="745" fetchpriority="high">
-          <figcaption>A Sebastian nameplate bracelet on the bench.</figcaption>
+          <img src="jjr/custom-jewelry-4.jpg" alt="A gold nameplate bracelet reading Sebastian being worked on at the bench" data-i18n-alt="heroAlt" width="1000" height="745" fetchpriority="high">
+          <figcaption data-i18n="heroCaption">A Sebastian nameplate bracelet on the bench.</figcaption>
         </figure>
       </div>
     </section>
@@ -245,31 +252,31 @@
     <section class="on-stone" id="services" aria-labelledby="services-title">
       <div class="wrap">
         <div class="section-intro">
-          <h2 id="services-title">What we do</h2>
-          <p>Bring your piece to the counter and Julio will look it over with you, explain what it needs, and give you a price before any work starts.</p>
+          <h2 id="services-title" data-i18n="servicesTitle">What we do</h2>
+          <p data-i18n="servicesIntro">Bring your piece to the counter and Julio will look it over with you, explain what it needs, and give you a price before any work starts.</p>
         </div>
         <ul class="services">
-          <li><h3>Chain, clasp and bracelet repair</h3><p>Broken links, worn clasps, snapped chains and bracelets that no longer close properly.</p></li>
-          <li><h3>Ring resizing</h3><p>Rings made larger or smaller so they fit comfortably again.</p></li>
-          <li><h3>Custom nameplates and pendants</h3><p>Names, initials and words in gold, in script or block letters, as necklaces or ID bracelets.</p></li>
-          <li><h3>Cleaning, polishing and restoration</h3><p>Bringing back the shine on worn or tarnished pieces you want to keep wearing.</p></li>
+          <li><h3 data-i18n="s1Title">Chain, clasp and bracelet repair</h3><p data-i18n="s1Body">Broken links, worn clasps, snapped chains and bracelets that no longer close properly.</p></li>
+          <li><h3 data-i18n="s2Title">Ring resizing</h3><p data-i18n="s2Body">Rings made larger or smaller so they fit comfortably again.</p></li>
+          <li><h3 data-i18n="s3Title">Custom nameplates and pendants</h3><p data-i18n="s3Body">Names, initials and words in gold, in script or block letters, as necklaces or ID bracelets.</p></li>
+          <li><h3 data-i18n="s4Title">Cleaning, polishing and restoration</h3><p data-i18n="s4Body">Bringing back the shine on worn or tarnished pieces you want to keep wearing.</p></li>
         </ul>
-        <p class="services-note">Not sure what your piece needs? <a href="tel:+12138568509">Call the shop</a> or bring it in.</p>
+        <p class="services-note" data-i18n-html="servicesNote">Not sure what your piece needs? <a href="tel:+12138568509">Call the shop</a> or bring it in.</p>
       </div>
     </section>
 
     <section class="on-stone work" id="work" aria-labelledby="work-title">
       <div class="wrap">
         <div class="section-intro">
-          <h2 id="work-title">Recent nameplates and pendants</h2>
-          <p>A few custom pieces made at the shop. Every one starts with a name, a letter style and a length you choose.</p>
+          <h2 id="work-title" data-i18n="workTitle">Recent nameplates and pendants</h2>
+          <p data-i18n="workIntro">A few custom pieces made at the shop. Every one starts with a name, a letter style and a length you choose.</p>
         </div>
         <div class="work-grid">
-          <figure class="main"><img src="jjr/custom-nameplates.jpg" alt="Three gold nameplate ID bracelets engraved Hattie, Adriel and Emily" width="1000" height="1000" loading="lazy"><figcaption>Engraved ID bracelets</figcaption></figure>
+          <figure class="main"><img src="jjr/custom-nameplates.jpg" alt="Three gold nameplate ID bracelets engraved Hattie, Adriel and Emily" data-i18n-alt="w1Alt" width="1000" height="1000" loading="lazy"><figcaption data-i18n="w1">Engraved ID bracelets</figcaption></figure>
           <div class="work-side">
-            <figure class="wide"><img src="jjr/custom-jewelry-3.webp" alt="Gold script name pendants reading Sydney and Estrella with star accents" width="510" height="510" loading="lazy"><figcaption>Script names with star accents</figcaption></figure>
-            <figure class="small"><img src="jjr/custom-nameplate-maria.png" alt="Gold Maria script nameplate necklace" width="276" height="237" loading="lazy"><figcaption>Script nameplate necklace</figcaption></figure>
-            <figure class="small"><img src="jjr/custom-pendant-miles.png" alt="Textured gold block-letter pendant reading Tiny mites" width="300" height="216" loading="lazy"><figcaption>Block-letter pendant</figcaption></figure>
+            <figure class="wide"><img src="jjr/custom-jewelry-3.webp" alt="Gold script name pendants reading Sydney and Estrella with star accents" data-i18n-alt="w2Alt" width="510" height="510" loading="lazy"><figcaption data-i18n="w2">Script names with star accents</figcaption></figure>
+            <figure class="small"><img src="jjr/custom-nameplate-maria.png" alt="Gold Maria script nameplate necklace" data-i18n-alt="w3Alt" width="276" height="237" loading="lazy"><figcaption data-i18n="w3">Script nameplate necklace</figcaption></figure>
+            <figure class="small"><img src="jjr/custom-pendant-miles.png" alt="Textured gold block-letter pendant reading Tiny mites" data-i18n-alt="w4Alt" width="300" height="216" loading="lazy"><figcaption data-i18n="w4">Block-letter pendant</figcaption></figure>
           </div>
         </div>
       </div>
@@ -278,28 +285,28 @@
     <section class="reviews" id="reviews" aria-labelledby="reviews-title">
       <div class="wrap">
         <div class="section-intro">
-          <h2 id="reviews-title">What customers say</h2>
-          <p>Excerpts from reviews left on Yelp.</p>
+          <h2 id="reviews-title" data-i18n="reviewsTitle">What customers say</h2>
+          <p data-i18n="reviewsIntro">Excerpts from reviews left on Yelp.</p>
         </div>
         <div class="review-grid">
           <figure class="review">
-            <blockquote>“Their nameplates work as the perfect gift!! … The price was the most affordable I was able to find in the jewelry district and the quality is great!”</blockquote>
-            <figcaption><strong>Estefani F.</strong>, Monterey Park, for a 14k nameplate</figcaption>
+            <blockquote lang="en">“Their nameplates work as the perfect gift!! … The price was the most affordable I was able to find in the jewelry district and the quality is great!”</blockquote>
+            <figcaption data-i18n-html="r1"><strong>Estefani F.</strong>, Monterey Park, for a 14k nameplate</figcaption>
           </figure>
           <figure class="review">
-            <blockquote>“The man that greeted us and sized my wife’s rings was very professional and knowledgeable. The price is reasonable and the quality of the work is great.”</blockquote>
-            <figcaption><strong>Edgar C.</strong>, November 2016</figcaption>
+            <blockquote lang="en">“The man that greeted us and sized my wife’s rings was very professional and knowledgeable. The price is reasonable and the quality of the work is great.”</blockquote>
+            <figcaption data-i18n-html="r2"><strong>Edgar C.</strong>, November 2016</figcaption>
           </figure>
           <figure class="review">
-            <blockquote>“Brought it back and he gave me my money back and said come back tomorrow. … Customer for life. Gracias amigo!”</blockquote>
-            <figcaption><strong>Christian S.</strong>, Los Angeles, February 2017</figcaption>
+            <blockquote lang="en">“Brought it back and he gave me my money back and said come back tomorrow. … Customer for life. Gracias amigo!”</blockquote>
+            <figcaption data-i18n-html="r3"><strong>Christian S.</strong>, Los Angeles, February 2017</figcaption>
           </figure>
         </div>
         <div class="review-foot">
-          <p>Reviews reflect individual experiences. Prices and turnaround depend on the piece, so call to ask about yours.</p>
+          <p data-i18n="reviewsFoot">Reviews reflect individual experiences. Prices and turnaround depend on the piece, so call to ask about yours.</p>
           <div class="review-links">
-            <a class="button ghost" href="https://www.yelp.com/search?find_desc=Julio%27s%20Jewelry%20Repair&amp;find_loc=Los%20Angeles%2C%20CA" target="_blank" rel="noopener"><img src="jjr/yelp-icon.png" alt="">Read more on Yelp</a>
-            <a class="button ghost" href="https://www.google.com/search?q=Julio%27s+Jewelry+Repair+212+W+7th+St+Los+Angeles+reviews" target="_blank" rel="noopener"><img src="jjr/google-business-icon.webp" alt="">Reviews on Google</a>
+            <a class="button ghost" href="https://www.yelp.com/search?find_desc=Julio%27s%20Jewelry%20Repair&amp;find_loc=Los%20Angeles%2C%20CA" target="_blank" rel="noopener"><img src="jjr/yelp-icon.png" alt=""><span data-i18n="yelp">Read more on Yelp</span></a>
+            <a class="button ghost" href="https://www.google.com/search?q=Julio%27s+Jewelry+Repair+212+W+7th+St+Los+Angeles+reviews" target="_blank" rel="noopener"><img src="jjr/google-business-icon.webp" alt=""><span data-i18n="google">Reviews on Google</span></a>
           </div>
         </div>
       </div>
@@ -308,36 +315,37 @@
     <section class="on-stone" id="visit" aria-labelledby="visit-title">
       <div class="wrap visit-grid">
         <div>
-          <h2 id="visit-title">Visit the shop</h2>
-          <p class="visit-lede">Walk in with your piece or call ahead. The shop is on West 7th Street in Downtown’s Jewelry District.</p>
+          <h2 id="visit-title" data-i18n="visitTitle">Visit the shop</h2>
+          <p class="visit-lede" data-i18n="visitLede">Walk in with your piece or call ahead. The shop is on West 7th Street in Downtown’s Jewelry District.</p>
           <dl class="details">
-            <div><dt>Address</dt><dd>212 W 7th St<br>Los Angeles, CA 90014</dd></div>
-            <div><dt>Phone</dt><dd><a href="tel:+12138568509">(213) 856-8509</a></dd></div>
-            <div><dt>Hours</dt><dd>Please call to confirm current hours</dd></div>
+            <div><dt data-i18n="address">Address</dt><dd>212 W 7th St<br>Los Angeles, CA 90014</dd></div>
+            <div><dt data-i18n="phone">Phone</dt><dd><a href="tel:+12138568509">(213) 856-8509</a></dd></div>
+            <div><dt data-i18n="hours">Hours</dt><dd data-i18n="hoursVisit">Please call to confirm current hours</dd></div>
+            <div><dt data-i18n="language">Language</dt><dd data-i18n="languageValue">English and Spanish · Se habla español</dd></div>
           </dl>
           <div class="visit-actions">
-            <a class="button" href="tel:+12138568509">Call the shop</a>
-            <a class="button ghost" href="https://maps.google.com/?q=212+W+7th+St,+Los+Angeles,+CA+90014" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a class="button" href="tel:+12138568509" data-i18n="callShop">Call the shop</a>
+            <a class="button ghost" href="https://maps.google.com/?q=212+W+7th+St,+Los+Angeles,+CA+90014" target="_blank" rel="noopener" data-i18n="openMaps">Open in Google Maps</a>
           </div>
         </div>
         <div class="form-card">
-          <h3>Send Julio a message</h3>
-          <p>Fill this in and your phone will open a text message to the shop, ready for you to review and send.</p>
+          <h3 data-i18n="formTitle">Send Julio a message</h3>
+          <p data-i18n="formIntro">Fill this in and your phone will open a text message to the shop, ready for you to review and send.</p>
           <form id="inquiry">
-            <label for="name">Your name<input id="name" name="name" autocomplete="name" required></label>
-            <label for="phone">Your phone<input id="phone" name="phone" type="tel" autocomplete="tel"></label>
-            <label class="full" for="topic">What do you need?
+            <label for="name"><span data-i18n="fName">Your name</span><input id="name" name="name" autocomplete="name" required></label>
+            <label for="phone"><span data-i18n="fPhone">Your phone</span><input id="phone" name="phone" type="tel" autocomplete="tel"></label>
+            <label class="full" for="topic"><span data-i18n="fTopic">What do you need?</span>
               <select id="topic" name="topic">
-                <option>Chain, clasp or bracelet repair</option>
-                <option>Ring resizing</option>
-                <option>Custom nameplate or pendant</option>
-                <option>Cleaning, polishing or restoration</option>
-                <option>Something else</option>
+                <option data-i18n="o1">Chain, clasp or bracelet repair</option>
+                <option data-i18n="o2">Ring resizing</option>
+                <option data-i18n="o3">Custom nameplate or pendant</option>
+                <option data-i18n="o4">Cleaning, polishing or restoration</option>
+                <option data-i18n="o5">Something else</option>
               </select>
             </label>
-            <label class="full" for="message">Tell us about the piece<textarea id="message" name="message" rows="4" placeholder="For example: 14k gold chain, the clasp broke"></textarea></label>
-            <button class="button" type="submit">Write the text message</button>
-            <p class="form-help full" id="form-help" aria-live="polite">Works on phones. On a computer, call (213) 856-8509 instead.</p>
+            <label class="full" for="message"><span data-i18n="fMessage">Tell us about the piece</span><textarea id="message" name="message" rows="4" placeholder="For example: 14k gold chain, the clasp broke" data-i18n-placeholder="fMessagePh"></textarea></label>
+            <button class="button" type="submit" data-i18n="fSubmit">Write the text message</button>
+            <p class="form-help full" id="form-help" aria-live="polite" data-i18n="fHelp">Works on phones. On a computer, call (213) 856-8509 instead.</p>
           </form>
         </div>
       </div>
@@ -350,29 +358,177 @@
         <img src="jjr/julios-logo-web.png" alt="Julio’s Jewelry Repair" width="520" height="382" loading="lazy">
         <address>212 W 7th St, Los Angeles, CA 90014<br><a href="tel:+12138568509">(213) 856-8509</a></address>
       </div>
-      <div class="credit">Website by <a href="https://goodtable.us">GoodTable</a></div>
+      <div class="credit"><span data-i18n="credit">Website by</span> <a href="https://goodtable.us">GoodTable</a></div>
     </div>
   </footer>
 
-  <div class="mobilebar" aria-label="Quick actions">
-    <a class="button" href="tel:+12138568509">Call</a>
-    <a class="button ghost" href="https://maps.google.com/?q=212+W+7th+St,+Los+Angeles,+CA+90014" target="_blank" rel="noopener">Directions</a>
+  <div class="mobilebar" aria-label="Quick actions" data-i18n-aria="quickAria">
+    <a class="button" href="tel:+12138568509" data-i18n="call">Call</a>
+    <a class="button ghost" href="https://maps.google.com/?q=212+W+7th+St,+Los+Angeles,+CA+90014" target="_blank" rel="noopener" data-i18n="directions">Directions</a>
   </div>
 
   <script>
+    /*
+      Translations
+      ------------
+      Every translatable piece of the page has a data-i18n key (text),
+      data-i18n-html (text with a link or bold), or data-i18n-alt /
+      data-i18n-placeholder / data-i18n-aria (attributes).
+      English lives in the HTML above. Spanish lives here: to change a
+      Spanish line, edit its value below. To add a new line, give the
+      element a new key and add that key here.
+      Customer reviews stay in their original English on purpose.
+    */
+    var ES = {
+      _title: 'Julio’s Jewelry Repair | Reparación de joyería y placas con nombre en el centro de LA',
+      _description: 'Reparación de joyería, ajuste de anillos y placas de oro con nombre personalizadas en 212 W 7th Street, en el Distrito de la Joyería de Los Ángeles. Llame a Julio al (213) 856-8509.',
+      skip: 'Saltar al contenido',
+      brandAria: 'Julio’s Jewelry Repair, volver al inicio',
+      navAria: 'Principal',
+      navServices: 'Servicios',
+      navWork: 'Nuestro trabajo',
+      navReviews: 'Reseñas',
+      navVisit: 'Visítenos',
+      callShop: 'Llame a la tienda',
+      heroTitle: 'Reparación de joyería y placas con nombre en el Distrito de la Joyería de LA',
+      heroLede: 'Julio repara cadenas, broches y anillos rotos, ajusta la medida de sus anillos y hace placas y dijes de oro personalizados con nombre en su tienda de la calle 7 Oeste.',
+      callNumber: 'Llame al (213) 856-8509',
+      getDirections: 'Cómo llegar',
+      shop: 'Tienda',
+      hours: 'Horario',
+      hoursHero: 'Llame para confirmar antes de venir',
+      language: 'Idioma',
+      languageValue: 'Español e inglés',
+      heroAlt: 'Una pulsera de oro con placa que dice Sebastian, trabajada en el banco del joyero',
+      heroCaption: 'Una pulsera con placa de Sebastian en el banco de trabajo.',
+      servicesTitle: 'Lo que hacemos',
+      servicesIntro: 'Traiga su pieza al mostrador. Julio la revisará con usted, le explicará lo que necesita y le dará el precio antes de empezar cualquier trabajo.',
+      s1Title: 'Reparación de cadenas, broches y pulseras',
+      s1Body: 'Eslabones rotos, broches gastados, cadenas reventadas y pulseras que ya no cierran bien.',
+      s2Title: 'Ajuste de medida de anillos',
+      s2Body: 'Agrandamos o achicamos anillos para que le queden cómodos otra vez.',
+      s3Title: 'Placas con nombre y dijes personalizados',
+      s3Body: 'Nombres, iniciales y palabras en oro, en letra cursiva o de molde, como collar o esclava.',
+      s4Title: 'Limpieza, pulido y restauración',
+      s4Body: 'Le devolvemos el brillo a piezas gastadas u oscurecidas que quiere seguir usando.',
+      servicesNote: '¿No sabe qué necesita su pieza? <a href="tel:+12138568509">Llame a la tienda</a> o tráigala.',
+      workTitle: 'Placas y dijes recientes',
+      workIntro: 'Algunas piezas personalizadas hechas en la tienda. Cada una empieza con un nombre, un estilo de letra y el largo que usted elija.',
+      w1Alt: 'Tres esclavas de oro con placa grabada con los nombres Hattie, Adriel y Emily',
+      w1: 'Esclavas con placa grabada',
+      w2Alt: 'Dijes de oro en letra cursiva con los nombres Sydney y Estrella, con estrellas',
+      w2: 'Nombres en cursiva con estrellas',
+      w3Alt: 'Collar de oro con el nombre Maria en letra cursiva',
+      w3: 'Collar con nombre en cursiva',
+      w4Alt: 'Dije de oro texturizado con letras de molde que dice Tiny mites',
+      w4: 'Dije con letras de molde',
+      reviewsTitle: 'Lo que dicen nuestros clientes',
+      reviewsIntro: 'Fragmentos de reseñas publicadas en Yelp, en su idioma original.',
+      r1: '<strong>Estefani F.</strong>, Monterey Park, por una placa de 14k',
+      r2: '<strong>Edgar C.</strong>, noviembre de 2016',
+      r3: '<strong>Christian S.</strong>, Los Ángeles, febrero de 2017',
+      reviewsFoot: 'Las reseñas reflejan experiencias individuales. El precio y el tiempo de entrega dependen de la pieza, así que llame para preguntar por la suya.',
+      yelp: 'Ver más en Yelp',
+      google: 'Reseñas en Google',
+      visitTitle: 'Visite la tienda',
+      visitLede: 'Venga con su pieza o llame antes. La tienda está en la calle 7 Oeste, en el Distrito de la Joyería del centro de Los Ángeles.',
+      address: 'Dirección',
+      phone: 'Teléfono',
+      hoursVisit: 'Llame para confirmar el horario actual',
+      openMaps: 'Abrir en Google Maps',
+      formTitle: 'Envíele un mensaje a Julio',
+      formIntro: 'Llene este formulario y su teléfono abrirá un mensaje de texto para la tienda, listo para revisar y enviar.',
+      fName: 'Su nombre',
+      fPhone: 'Su teléfono',
+      fTopic: '¿Qué necesita?',
+      o1: 'Reparación de cadena, broche o pulsera',
+      o2: 'Ajuste de medida de anillo',
+      o4: 'Limpieza, pulido o restauración',
+      o3: 'Placa con nombre o dije personalizado',
+      o5: 'Otra cosa',
+      fMessage: 'Cuéntenos sobre la pieza',
+      fMessagePh: 'Por ejemplo: cadena de oro de 14k, se rompió el broche',
+      fSubmit: 'Escribir el mensaje de texto',
+      fHelp: 'Funciona en teléfonos. Desde una computadora, llame al (213) 856-8509.',
+      fReady: 'Su mensaje de texto está listo. Revíselo y toque Enviar.',
+      smsIntro: 'Hola Julio, tengo una pregunta sobre una pieza.',
+      smsName: 'Nombre',
+      smsPhone: 'Teléfono',
+      smsService: 'Servicio',
+      smsDetails: 'Detalles',
+      smsNoPhone: 'No proporcionado',
+      credit: 'Sitio web por',
+      quickAria: 'Acciones rápidas',
+      call: 'Llamar',
+      directions: 'Cómo llegar'
+    };
+    var EN_EXTRA = {
+      fReady: 'Your text message is ready. Review it and tap Send.',
+      smsIntro: 'Hi Julio, I have a question about a piece.',
+      smsName: 'Name', smsPhone: 'Phone', smsService: 'Service', smsDetails: 'Details', smsNoPhone: 'Not provided'
+    };
+
     (function () {
+      var EN = { _title: document.title, _description: document.querySelector('meta[name="description"]').content };
+      var ATTRS = { 'data-i18n-alt': 'alt', 'data-i18n-placeholder': 'placeholder', 'data-i18n-aria': 'aria-label' };
+      var current = 'en';
+
+      // Save the English text already on the page so we can switch back.
+      document.querySelectorAll('[data-i18n]').forEach(function (el) { EN[el.dataset.i18n] = el.textContent; });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) { EN[el.dataset.i18nHtml] = el.innerHTML; });
+      Object.keys(ATTRS).forEach(function (a) {
+        document.querySelectorAll('[' + a + ']').forEach(function (el) { EN[el.getAttribute(a)] = el.getAttribute(ATTRS[a]); });
+      });
+      Object.keys(EN_EXTRA).forEach(function (k) { EN[k] = EN_EXTRA[k]; });
+
+      function t(key) { var d = current === 'es' ? ES : EN; return d[key] != null ? d[key] : EN[key]; }
+
+      function setLanguage(lang) {
+        current = lang === 'es' ? 'es' : 'en';
+        document.documentElement.lang = current;
+        document.title = t('_title');
+        document.querySelector('meta[name="description"]').content = t('_description');
+        document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.dataset.i18n); });
+        document.querySelectorAll('[data-i18n-html]').forEach(function (el) { el.innerHTML = t(el.dataset.i18nHtml); });
+        Object.keys(ATTRS).forEach(function (a) {
+          document.querySelectorAll('[' + a + ']').forEach(function (el) { el.setAttribute(ATTRS[a], t(el.getAttribute(a))); });
+        });
+        document.querySelectorAll('[data-lang-toggle]').forEach(function (btn) {
+          btn.textContent = current === 'es' ? 'English' : 'Español';
+          btn.lang = current === 'es' ? 'en' : 'es';
+          btn.setAttribute('aria-label', current === 'es' ? 'View this page in English' : 'Ver esta página en español');
+        });
+        try { localStorage.setItem('jjr-lang', current); } catch (e) {}
+      }
+
+      document.querySelectorAll('[data-lang-toggle]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setLanguage(current === 'es' ? 'en' : 'es');
+          var url = new URL(location.href);
+          url.searchParams.set('lang', current);
+          history.replaceState(null, '', url);
+        });
+      });
+
+      // Pick a language: ?lang=es in the link, then the visitor's last choice, then their phone's language.
+      var start = new URLSearchParams(location.search).get('lang');
+      if (!start) { try { start = localStorage.getItem('jjr-lang'); } catch (e) {} }
+      if (!start) { start = (navigator.language || '').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'; }
+      if (start === 'es') setLanguage('es');
+
       var form = document.getElementById('inquiry');
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         var data = new FormData(form);
+        var topic = form.topic.options[form.topic.selectedIndex].textContent;
         var body = encodeURIComponent(
-          'Hi Julio, I have a question about a piece.\n' +
-          'Name: ' + data.get('name') + '\n' +
-          'Phone: ' + (data.get('phone') || 'Not provided') + '\n' +
-          'Service: ' + data.get('topic') + '\n' +
-          'Details: ' + (data.get('message') || '—')
+          t('smsIntro') + '\n' +
+          t('smsName') + ': ' + data.get('name') + '\n' +
+          t('smsPhone') + ': ' + (data.get('phone') || t('smsNoPhone')) + '\n' +
+          t('smsService') + ': ' + topic + '\n' +
+          t('smsDetails') + ': ' + (data.get('message') || '—')
         );
-        document.getElementById('form-help').textContent = 'Your text message is ready. Review it and tap Send.';
+        document.getElementById('form-help').textContent = t('fReady');
         window.location.href = 'sms:+12138568509?&body=' + body;
       });
     }());
